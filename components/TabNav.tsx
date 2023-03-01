@@ -9,7 +9,7 @@ interface IProps {
 export default function TabNav(props: IProps) {
 	const { tabKey, toggleKey } = props;
 	return (
-		<div className="mt-20">
+		<div className="mt-20 overflow-x-auto tab">
 			<nav className="flex border-b border-gray-100 text-sm font-medium">
 				{prompt.map((p) => (
 					// rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>

@@ -86,7 +86,7 @@ export default function QAContainer(props: IProps) {
 								onGenerate();
 							}
 						}}
-						placeholder="请输入单词"
+						placeholder="请输入问题"
 						className="w-48 h-12 px-4 rounded-md border border-gray-200 shadow-sm sm:text-sm focus:border-cyan-500 focus:outline-none text-lg "
 					/>
 				)}
@@ -98,14 +98,14 @@ export default function QAContainer(props: IProps) {
 								onGenerate();
 							}
 						}}
-						placeholder="请输入文本"
-						className="w-96 h-12 px-4 py-2 rounded-md border border-gray-200 shadow-sm sm:text-sm focus:border-cyan-500 focus:outline-none text-lg "
+						placeholder="请输入问题"
+						className="w-64 sm:w-96 h-12 px-4 py-2 rounded-md border border-gray-200 shadow-sm sm:text-sm focus:border-cyan-500 focus:outline-none text-lg "
 					/>
 				)}
 				{/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
 				<div
 					onClick={onGenerate}
-					className="ml-0 sm:ml-8 hidden cursor-pointer sm:block rounded-md border-2 border-black px-8 py-3 text-sm font-semibold text-black transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-cyan-600"
+					className="ml-4 sm:ml-8 cursor-pointer sm:block rounded-md border-2 border-black px-2 sm:px-8 py-3 text-sm font-semibold text-black transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-cyan-600"
 				>
 					生成答案
 				</div>
@@ -115,11 +115,7 @@ export default function QAContainer(props: IProps) {
 					<p
 						className='sty1 markdown-body'
 						dangerouslySetInnerHTML={{
-							__html: marked(generatedChat.toString(), {
-								gfm: true,
-								breaks: true,
-								smartypants: true,
-							}),
+							__html: marked(generatedChat.toString()),
 						}}
 					/>
 				) : (
