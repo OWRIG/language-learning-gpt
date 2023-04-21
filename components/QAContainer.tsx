@@ -12,6 +12,7 @@ export default function QAContainer(props: IProps) {
 	const { tabKey } = props;
 	const [params, setParams] = useState<string[]>([]);
 	const [generatedChat, setGeneratedChat] = useState<string>("");
+	const [iframeValue, setIframeValue] = useState<string>("");
 
 	useEffect(() => {
 		setGeneratedChat("");
@@ -30,6 +31,10 @@ export default function QAContainer(props: IProps) {
 			return;
 		}
 		setGeneratedChat("");
+
+		if (type === TYPE.WORD) {
+			setIframeValue(params[0] || "");
+		}
 
 		let response;
 		try {
@@ -123,6 +128,12 @@ export default function QAContainer(props: IProps) {
 				)}
 				<span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-cyan-500" />
 			</div>
+			{!!iframeValue && (
+				<iframe
+					className="mt-8 w-full h-screen"
+					src={`https://www.youdao.com/result?word=${iframeValue}&lang=en`}
+				/>
+			)}
 			<Toaster
 				position='top-center'
 				reverseOrder={false}
