@@ -6,6 +6,7 @@ specifiers:
   '@types/node': 18.14.2
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
+  '@vercel/analytics': ^1.0.1
   autoprefixer: ^10.4.13
   csstype: ^3.0.10
   eslint: 8.35.0
@@ -25,6 +26,7 @@ dependencies:
   '@types/node': 18.14.2
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
+  '@vercel/analytics': registry.npmmirror.com/@vercel/analytics/1.0.1
   csstype: 3.1.1
   eslint: 8.35.0
   eslint-config-next: 13.2.1_ycpbpc6yetojsgtrx3mwntkhsu
@@ -2541,6 +2543,12 @@ packages:
       postcss-selector-parser: registry.npmmirror.com/postcss-selector-parser/6.0.10
       tailwindcss: 3.2.7_postcss@8.4.21
     dev: true
+
+  registry.npmmirror.com/@vercel/analytics/1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vercel/analytics/-/analytics-1.0.1.tgz}
+    name: '@vercel/analytics'
+    version: 1.0.1
+    dev: false
 
   registry.npmmirror.com/cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cssesc/-/cssesc-3.0.0.tgz}
