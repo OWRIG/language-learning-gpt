@@ -1,7 +1,4 @@
-import {
-	OpenAIStream,
-	type OpenAIStreamPayload,
-} from "@/utils/OpenAIStream";
+import { OpenAIStream, type OpenAIStreamPayload } from "@/utils/OpenAIStream";
 
 export const config = {
 	runtime: "edge",
@@ -17,10 +14,10 @@ const handler = async (req: Request): Promise<Response> => {
 		return new Response("No prompt in the request", { status: 400 });
 	}
 
-	const payload: OpenAIStreamPayload = {
-		model: "text-davinci-003",
-		prompt: description,
-		temperature: 0.7,
+	const payload = {
+		model: "gpt-3.5-turbo",
+		messages: [{ role: "assistant", content: description }],
+		temperature: 0.2,
 		top_p: 1,
 		frequency_penalty: 0,
 		presence_penalty: 0,
@@ -30,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
 		stop: ["<|im_end|>"],
 	};
 
-	const stream = await OpenAIStream(payload);
+	const stream = await OpenAIStream(payload as any);
 	return new Response(stream);
 };
 

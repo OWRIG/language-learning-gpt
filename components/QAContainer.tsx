@@ -13,6 +13,7 @@ export default function QAContainer(props: IProps) {
 	const [params, setParams] = useState<string[]>([]);
 	const [generatedChat, setGeneratedChat] = useState<string>("");
 	const [iframeValue, setIframeValue] = useState<string>("");
+	const [toggle, setToggle] = useState<boolean>(false);
 
 	useEffect(() => {
 		setGeneratedChat("");
@@ -80,6 +81,10 @@ export default function QAContainer(props: IProps) {
 		}
 	};
 
+	const onToggle = useCallback(() => {
+		setToggle((prev) => !prev);
+	}, []);
+
 	return (
 		<div className="mt-12">
 			<div className="flex flex-row">
@@ -114,25 +119,38 @@ export default function QAContainer(props: IProps) {
 				>
 					生成答案
 				</div>
+				{iframeValue && (
+					<div
+						onClick={onToggle}
+						className="ml-4 sm:ml-8 cursor-pointer sm:block rounded-md border-2 border-black px-2 sm:px-8 py-3 text-sm font-semibold text-black transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-cyan-600"
+					>
+						查看字典
+					</div>
+				)}
 			</div>
 			<div className="mt-12 relative block overflow-hidden rounded-lg border-2 border-gray-100 p-4 sm:p-6 lg:p-8">
 				{generatedChat ? (
-					<p
-						className='sty1 markdown-body'
-						dangerouslySetInnerHTML={{
-							__html: marked(generatedChat.toString()),
-						}}
-					/>
+					<article className="prose w-full">
+						<p
+							className="w-full"
+							dangerouslySetInnerHTML={{
+								__html: marked(generatedChat.toString()),
+							}}
+						/>
+					</article>
 				) : (
 					<div className="h-20 border-black">在这里将会生成答案</div>
 				)}
 				<span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-cyan-500" />
 			</div>
-			{!!iframeValue && (
-				<iframe
-					className="mt-8 w-full h-screen"
-					src={`https://www.youdao.com/result?word=${iframeValue}&lang=en`}
-				/>
+			{!!iframeValue && toggle && (
+				<div className="mt-12 h-1/3 relative block overflow-hidden rounded-lg border-2 border-gray-100">
+					<iframe
+						className="mt-8 w-full h-screen"
+						src={`https://www.youdao.com/result?word=${iframeValue}&lang=en`}
+					/>
+					<span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-cyan-500" />
+				</div>
 			)}
 			<Toaster
 				position='top-center'
